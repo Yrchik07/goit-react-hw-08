@@ -5,10 +5,10 @@ import {
   selectContacts,
   selectError,
   selectIsLoading,
-  selectVisibleContacts,
-  } from '../../redux/selectors';
+  } from '../../redux/contacts/selectors';
 import Loader from '../Loader/Loader'
 import ErrorMessage from '../ErrorMessage/ErrorMessage'
+import { selectVisibleContacts } from '../../redux/filters/selectors';
 export default function ContactList() {
   const details = useSelector(selectContacts);
   const contactsData = useSelector(selectVisibleContacts);
