@@ -11,7 +11,7 @@ import {
 import css from '../ContactForm/ContactForm.module.css';
 import { useDispatch } from 'react-redux';
 import { nanoid } from '@reduxjs/toolkit';
-import { addContact } from '../../redux/contactsOps';
+import { addContact } from '../../redux/contacts/operations';
 
 const ContactFormSchema = yup.object().shape({
   name: yup

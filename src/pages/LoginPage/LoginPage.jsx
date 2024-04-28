@@ -23,7 +23,7 @@ const formInitialValues = {
   password: "",
 };
 
-const HomePage = () => {
+const LoginPage = () => {
     const dispatch = useDispatch();
   const handleSubmit = (values, actions) => {
     console.log('values: ', values);
@@ -65,5 +65,4 @@ const HomePage = () => {
     </Formik>
   );
 }
-export default HomePage
-
+export default LoginPage
