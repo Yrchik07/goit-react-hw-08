@@ -1,0 +1,24 @@
+li {
+  list-style-type: none;
+}
+.contactItemBox {
+  width: 300px;
+  display: flex;
+  justify-content: space-between;
+  border: 1px solid black;
+  border-radius: 10px;
+}
+.contactItem {
+  margin-left: 20px;
+}
+.contactButtonDelete {
+  display: flex;
+  justify-content: center;
+  text-align: center;
+  margin: auto 0;
+  margin-right: 20px;
+}
+.buttonDelete {
+  width: 80px;
+  height: 35px;
+}
