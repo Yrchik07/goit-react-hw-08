@@ -1,40 +1,45 @@
-import { createAsyncThunk } from '@reduxjs/toolkit';
-import axios from 'axios';
+import { createAsyncThunk } from "@reduxjs/toolkit";
+import { instance } from "../auth/slice";
 
-axios.defaults.baseURL = 'https://662a6adb67df268010a3d812.mockapi.io';
 
-export const fetchContacts = createAsyncThunk(
-  'contacts/fetchContacts',
-  async (_, thunkAPI) => {
+export const apiGetContacts = createAsyncThunk(
+  "contacts/getAll",
+  async (_, thunkApi) => {
     try {
-      const response = await axios.get('/contacts'); 
-      return response.data;
-    } catch (e) {      
-      return thunkAPI.rejectWithValue(e.message);
+      const { data } = await instance.get("/contacts");
+      console.log("data GetContacts: ", data);
+
+      return data;
+    } catch (e) {
+      return thunkApi.rejectWithValue(e.message);
     }
   }
 );
 
-export const addContact = createAsyncThunk(
-  'contacts/addContact',
-  async (contact, thunkAPI) => {
+export const apiAddContact = createAsyncThunk(
+  "contacts/addNew",
+  async (formData, thunkApi) => {
     try {
-      const response = await axios.post('/contacts', contact);
-      return response.data;
+      const { data } = await instance.post("/contacts", formData);
+      console.log("data apiAddContact: ", data);
+
+      return data;
     } catch (e) {
-      return thunkAPI.rejectWithValue(e.message);
+      return thunkApi.rejectWithValue(e.message);
     }
   }
 );
 
-export const deleteContact = createAsyncThunk(
-  'contacts/deleteContact',
-  async (contactId, thunkAPI) => {
+export const apiRemoveContact = createAsyncThunk(
+  "contacts/remove",
+  async (contactId, thunkApi) => {
     try {
-      const response = await axios.delete(`/contacts/${contactId}`);
-      return response.data;
+      const { data } = await instance.delete(`/contacts/${contactId}`);
+      console.log("data apiRemoveContact: ", data);
+
+      return data;
     } catch (e) {
-      return thunkAPI.rejectWithValue(e.message);
+      return thunkApi.rejectWithValue(e.message);
     }
   }
 );
