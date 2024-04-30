@@ -1,21 +1,21 @@
-import { ErrorMessage, Field, Form, Formik } from "formik";
-import * as Yup from "yup";
-import { useDispatch } from "react-redux";
-import { apiAddContact } from "../../redux/contacts/operations";
+import { ErrorMessage, Field, Form, Formik } from 'formik';
+import * as Yup from 'yup';
+import { useDispatch } from 'react-redux';
+import { apiAddContact } from '../../redux/contacts/operations';
 
 const addNewContactSchema = Yup.object().shape({
-  name: Yup.string().required("Name is required!"),
-  number: Yup.string().required("Number is required!"),
+  name: Yup.string().required('Name is required!'),
+  number: Yup.string().required('Number is required!'),
 });
 
 const FORM_INITIAL_VALUES = {
-  name: "",
-  number: "",
+  name: '',
+  number: '',
 };
 
 const AddContactForm = () => {
   const dispatch = useDispatch();
-  
+
   const handleSubmit = (values, actions) => {
     dispatch(apiAddContact(values));
     actions.resetForm();
@@ -35,7 +35,7 @@ const AddContactForm = () => {
             <br />
             <Field type="text" name="name" placeholder="jorik" />
             <ErrorMessage component="p" name="name" />
-          </label>{" "}
+          </label>{' '}
           <br />
           <label>
             <span>Number:</span>

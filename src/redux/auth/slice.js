@@ -13,38 +13,37 @@ export const setToken = token => {
 export const clearToken = () =>
   (instance.defaults.headers.common.Authorization = '');
 
-  const INITIAL_STATE = {
-    isSignedIn: false,
-    userData: null,
-    token: null,
-    isLoading: false,
-    isError: false,
-  };
-  
+const INITIAL_STATE = {
+  isSignedIn: false,
+  userData: null,
+  token: null,
+  isLoading: false,
+  isError: false,
+};
 
 const authSlice = createSlice({
   name: 'auth',
   initialState: INITIAL_STATE,
   extraReducers: builder =>
     builder
-    .addCase(apiRegister.fulfilled, (state, action) => {
-      state.isLoading = false;
-      state.isSignedIn = true;
-      state.userData = action.payload.user;
-      state.token = action.payload.token;
-    })
-    .addCase(apiLogin.fulfilled, (state, action) => {
-      state.isLoading = false;
-      state.isSignedIn = true;
-      state.userData = action.payload.user;
-      state.token = action.payload.token;
-    })
-    .addCase(apiRefreshUser.fulfilled, (state, action) => {
-      state.isLoading = false;
-      state.isSignedIn = true;
-      state.userData = action.payload;
-    })
-    .addCase(apiLogout.fulfilled, () => {
+      .addCase(apiRegister.fulfilled, (state, action) => {
+        state.isLoading = false;
+        state.isSignedIn = true;
+        state.userData = action.payload.user;
+        state.token = action.payload.token;
+      })
+      .addCase(apiLogin.fulfilled, (state, action) => {
+        state.isLoading = false;
+        state.isSignedIn = true;
+        state.userData = action.payload.user;
+        state.token = action.payload.token;
+      })
+      .addCase(apiRefreshUser.fulfilled, (state, action) => {
+        state.isLoading = false;
+        state.isSignedIn = true;
+        state.userData = action.payload;
+      })
+      .addCase(apiLogout.fulfilled, () => {
         return INITIAL_STATE;
       })
       .addMatcher(

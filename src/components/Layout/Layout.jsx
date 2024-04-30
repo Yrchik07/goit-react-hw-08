@@ -3,7 +3,8 @@ import css from './Layout.module.css';
 import { NavLink } from 'react-router-dom';
 import { useDispatch, useSelector } from 'react-redux';
 import { apiLogout } from '../../redux/auth/operations';
-// import {selectIsSignedIn} from 
+import { selectIsSignedIn, selectUserData } from '../../redux/auth/selectors';
+import { useState } from 'react';
 const getNavLinkClassName = ({ isActive }) =>
   clsx(css.navLink, {
     [css.active]: isActive,
@@ -13,21 +14,25 @@ const Layout = ({ children }) => {
   const dispatch = useDispatch();
   const isSignedIn = useSelector(selectIsSignedIn);
   const userData = useSelector(selectUserData);
-  const [isModalOpen, setIsModalOpen] = useSelector(false)
+  const [isModalOpen, setIsModalOpen] = useState(false);
 
-  const onCloseModal = ()=> setIsModalOpen(false)
-  const onOpenModal = () => setIsModalOpen(true)
+  const onCloseModal = () => setIsModalOpen(false);
+  const onOpenModal = () => setIsModalOpen(true);
   const onLogout = () => {
     dispatch(apiLogout());
-    onCloseModal()
+    onCloseModal();
   };
   return (
     <div>
-      {isModalOpen &&(
+      {isModalOpen && (
         <div>
           <h3>Logo Out?</h3>
-          <button onClick={onLogout} type='button'>Yes</button>
-          <button onClick={onCloseModal} type='button'>No</button>
+          <button onClick={onLogout} type="button">
+            Yes
+          </button>
+          <button onClick={onCloseModal} type="button">
+            No
+          </button>
         </div>
       )}
       <header>

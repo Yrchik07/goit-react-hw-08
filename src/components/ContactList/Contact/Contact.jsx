@@ -2,7 +2,7 @@ import { useDispatch } from 'react-redux';
 import css from '../Contact/Contact.module.css';
 import { deleteContact } from '../../../redux/contacts/operations';
 
-export default function Contact({contact}) {
+export default function Contact({ contact }) {
   const dispatch = useDispatch();
   const { id, name, number } = contact;
 
@@ -19,7 +19,7 @@ export default function Contact({contact}) {
             type="button"
             onClick={() => dispatch(deleteContact(id))}
             id={id}
-              >
+          >
             Delete
           </button>
         </section>
@@ -27,4 +27,3 @@ export default function Contact({contact}) {
     </>
   );
 }
-
