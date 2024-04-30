@@ -26,7 +26,6 @@ const formInitialValues = {
 const LoginPage = () => {
   const dispatch = useDispatch();
   const handleSubmit = (values, actions) => {
-    console.log('values: ', values);
     dispatch(apiLogin(values));
     actions.resetForm();
   };

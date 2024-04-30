@@ -2,6 +2,7 @@ import { ErrorMessage, Field, Form, Formik } from 'formik';
 import * as Yup from 'yup';
 import { useDispatch } from 'react-redux';
 import { apiAddContact } from '../../redux/contacts/operations';
+import css from '../AddContactForm/AddContactForm.module.css';
 
 const addNewContactSchema = Yup.object().shape({
   name: Yup.string().required('Name is required!'),
@@ -28,8 +29,8 @@ const AddContactForm = () => {
         validationSchema={addNewContactSchema}
         onSubmit={handleSubmit}
       >
-        <Form>
-          <h2>Add new contact</h2>
+        
+        <Form className={css.contactForm}>
           <label>
             <span>Name:</span>
             <br />

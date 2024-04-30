@@ -12,7 +12,7 @@ import {
 import Loader from '../../components/Loader/Loader';
 import ErrorMessage from '../../components/ErrorMessage/ErrorMessage';
 import AddContactForm from '../../components/AddContactForm/AddContactForm';
-
+import css from '../ContactsPage/ContactsPage.module.css';
 const ContactsPage = () => {
   const dispatch = useDispatch();
   const isLoading = useSelector(selectPhoneBookIsLoading);
@@ -29,23 +29,30 @@ const ContactsPage = () => {
 
   return (
     <div>
+      <h2>Add new contact</h2>
       <AddContactForm />
       {isLoading && <Loader />}
       {isError && <ErrorMessage />}
-      <ul>
+      <ul className={css.contactList}>
         {Array.isArray(contacts) && contacts.length === 0 && (
           <li>You don&apos;t have any added contacts yet!</li>
         )}
         {Array.isArray(contacts) &&
           contacts.map(item => (
-            <li key={item.id}>
-              <h3>
-                Name: {item.name}{' '}
-                <button onClick={() => onDeleteContact(item.id)} type="button">
-                  ❌
+            <li key={item.id} className={css.contactItemBox}>
+              <section className={css.contactItem}>
+                <p>👤 {item.name}</p>
+                <p>📞 {item.number}</p>
+              </section>
+              <section className={css.contactButtonDelete}>
+                <button
+                  className={css.buttonDelete}
+                  onClick={() => onDeleteContact(item.id)}
+                  type="button"
+                >
+                  Delete
                 </button>
-              </h3>
-              <p>Number: {item.number}</p>
+              </section>
             </li>
           ))}
       </ul>

@@ -36,13 +36,3 @@ export const store = configureStore({
 
 export const persistor = persistStore(store);
 
-// {name: "yriy", email: "fafaf@dgsg.com", password: "121323232"}
-// email
-// :
-// "fafaf@dgsg.com"
-// name
-// :
-// "yriy"
-// password
-// :
-// "121323232"
