@@ -1,4 +1,4 @@
-import {Suspense, useEffect, useRef, useState } from 'react';
+import { Suspense, useEffect, useRef, useState } from 'react';
 import {
   Outlet,
   Link,
@@ -61,19 +61,22 @@ const MovieDetailsPage = () => {
             <h3>Additional information</h3>
             <ul>
               <li>
-                <NavLink to="cast"
-                 state={{ url: `movie/${movieId}/credits` }}
-                 >
-                  Cast</NavLink>
+                <NavLink to="cast" state={{ url: `movie/${movieId}/credits` }}>
+                  Cast
+                </NavLink>
               </li>
               <li>
-                <NavLink to="reviews" state={{ url: `movie/${movieId}/reviews` }}>
-                  Reviews</NavLink>
+                <NavLink
+                  to="reviews"
+                  state={{ url: `movie/${movieId}/reviews` }}
+                >
+                  Reviews
+                </NavLink>
               </li>
             </ul>
           </section>
           <Suspense fallback={<Loader />}>
-             <Outlet />
+            <Outlet />
           </Suspense>
         </div>
       )}

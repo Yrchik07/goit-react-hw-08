@@ -1,3 +1,3 @@
-export const selectContacts = state => state.contacts.items;
-export const selectIsLoading = state => state.contacts.loading;
-export const selectError = state => state.contacts.error;
+export const selectPhoneBookContacts = state => state.phoneBook.contacts;
+export const selectPhoneBookIsLoading = state => state.phoneBook.isLoading;
+export const selectPhoneBookIsError = state => state.phoneBook.isError;

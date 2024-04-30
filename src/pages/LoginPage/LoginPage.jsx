@@ -8,23 +8,23 @@ import { apiLogin } from '../../redux/auth/operations';
 const loginUserSchema = yup.object().shape({
   email: yup
     .string()
-    .required("Email address is required!")
-    .email("You must enter valid email address!"),
-    password: yup
+    .required('Email address is required!')
+    .email('You must enter valid email address!'),
+  password: yup
     .string()
-    .required("Password is required!")
+    .required('Password is required!')
     .min(
       minCharPasswordValidation,
       `Your password must be greater than ${minCharPasswordValidation} characters!`,
     ),
 });
 const formInitialValues = {
-  email: "",
-  password: "",
+  email: '',
+  password: '',
 };
 
 const LoginPage = () => {
-    const dispatch = useDispatch();
+  const dispatch = useDispatch();
   const handleSubmit = (values, actions) => {
     console.log('values: ', values);
     dispatch(apiLogin(values));
@@ -38,13 +38,10 @@ const LoginPage = () => {
     >
       <Form className={css.contactForm}>
         <label>
-        <h2>Login user</h2>
+          <h2>Login user</h2>
           <span>Email:</span>
           <br />
-          <Field
-           type="email"
-           name="email"
-           placeholder="xxxxx@xx.ua"/>
+          <Field type="email" name="email" placeholder="xxxxx@xx.ua" />
           <ErrorMessage component="p" name="email" />
         </label>
         <br />
@@ -52,10 +49,10 @@ const LoginPage = () => {
           <span>Password:</span>
           <br />
           <Field
-              type="password"
-              name="password"
-              placeholder="Enter your password"
-              />
+            type="password"
+            name="password"
+            placeholder="Enter your password"
+          />
           <ErrorMessage component="p" name="password" />
         </label>
         <br />
@@ -64,5 +61,5 @@ const LoginPage = () => {
       </Form>
     </Formik>
   );
-}
-export default LoginPage
+};
+export default LoginPage;
